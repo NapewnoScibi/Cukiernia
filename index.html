@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cukiernia w płocku</title>
+        <link rel="stylesheet" href="kolorki.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <header>
+        <p>Witamy w cukierni w płocku</p>
+        </header>
+        <br><br><br><br><br>
+        <main>
+            <caption>Zamówienie z cukierni:</caption><br>
+            <label id="zam_1">Makowce 10zl:</label> <input type="number" id="il_1" class="dlugosc" value="0"><br>
+            <label id="zam_2">Babeczki 4zl:</label> <input type="number" id="il_2" class="dlugosc" value="0"><br>
+            <label id="zam_3">Ciasto czekoladowe 22zl:</label> <input type="number" id="il_3" class="dlugosc" value="0"><br>
+            <label id="zam_4">Pączki 3zl:</label> <input type="number" id="il_4" class="dlugosc" value="0"><br>
+            <label id="zam_5">Sernik 17zl:</label> <input type="number" id="il_5" class="dlugosc" value="0"><br>
+            <label id="piorytet">Zamówienie priorytetowe*:</label> <input type="checkbox" id="pior"><br>
+            <label id="zniszka">Zniszka:</label> <input type="number" value="0" id="nisz" class="dlugosc"><br>
+            <input type="button" value="Utwórz zamówienie (+ vat)" onclick="zamowienie()"><br>
+            <label>Zamówienie priorytetowe przychodzi w ciągu jednego dnia roboczego*</label><br>
+
+        </main>
+        <br>
+        <div>
+            <p id="wypisz">Oczekiwanie na zamowienie</p>
+        </div>
+        <div id#="dol"></div><br>
+        <footer>
+            <p>Cukiernia Płock - Mateusz Ścibiorski , wszelkie prawa nie zastrzerzone.</p>
+        </footer>
+    </body>
+    <script>
+        function zamowienie()
+        {
+            let ilosc = [5];
+            for(let i = 1; i<6 ;i++)
+            {
+                ilosc[i] = document.getElementById("il_"+i).value
+                if(ilosc[i] < 0)
+                {
+                    alert("wartosc " + i + " jest zle podana");
+                    return;
+                }
+                console.log(ilosc[i]);
+            }
+            let x = document.getElementById("wypisz");
+            x.innerHTML = "Zamowienie:<br>";
+            for(let i = 1; i<6 ;i++)
+            {
+                if(ilosc[i] != 0)
+                {
+                    
+                    x.innerHTML += document.getElementById("zam_"+i).innerHTML + ilosc[i] + "<br>";
+                }
+            }
+            let cena = 0;
+            cena = (ilosc[1] * 10) + (ilosc[2] * 4) + (ilosc[3] * 23) + (ilosc[4] * 3) + (ilosc[5] * 17);
+            cena = cena * (1 - (document.getElementById("nisz").value/100))
+            x.innerHTML += "Cena "+cena+"zł<br>"
+            x.innerHTML += "Cena (z podatkiem vat 8%)"+ (cena + (cena * 0.08)).toFixed(2)+"zł<br>"
+            data = new Date();
+            if(document.getElementById("pior").checked == true)
+            {
+                x.innerHTML += "Data dostawy(priorytet):" +  (data.getDate()+1)+"."+(data.getMonth()+1)+"."+data.getFullYear();
+            }
+            else
+            {
+                x.innerHTML += "Data dostawy:" +  (data.getDate()+3)+"."+(data.getMonth()+1)+"."+data.getFullYear();
+            }
+        }
+    </script>
+</html>

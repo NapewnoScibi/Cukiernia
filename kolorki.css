@@ -1,0 +1,63 @@
+body
+{
+    background-image: url("tlo.png");
+    display: grid;
+    grid-template-rows: auto 1fr auto;  
+}
+body , html
+{
+    margin:0;
+    padding:0;
+}
+header
+{
+    margin:0;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    font-size: 32px;
+    color: #F0EFF4;
+    font-weight: 300;
+    background-color: #DAB785;
+    border: black solid 3px;
+}
+#wypisz
+{
+    text-align: left;
+    margin:auto;
+    width: 45%;
+    border: black solid 3px;
+    background-color: #DAB785; 
+    font-size: 22px;
+    color: #F0EFF4;
+    font-weight: 200;
+}
+main
+{
+    text-align: left;
+    margin:auto;
+    width: 45%;
+    border: black solid 3px;
+    background-color: #DAB785; 
+    font-size: 22px;
+    color: #F0EFF4;
+    font-weight: 200;
+}
+footer
+{
+    display: flex;
+    flex:0 0;
+    border: black solid 3px;
+    background-color: orange; 
+    color: #F0EFF4;
+    height: 100%;
+    width: 100%;
+}
+.dlugosc
+{
+    width: 25%;
+}
+#dol
+{
+    margin-bottom: 100%;
+}
